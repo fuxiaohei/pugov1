@@ -9,6 +9,7 @@
     <meta name="description" content="PuGo is a Simple Static Site Generator" />
     <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/_admin/admin.css" />
+    <link rel="stylesheet" href="/_admin/simplemde.min.css">
 </head>
 
 <body class="" data-perma="">
@@ -43,7 +44,7 @@
         <div class="container">
             <h4>Edit Page</h4>
             <hr>
-            <form action="/_admin/page/edit" method="post">
+            <form method="post" id="post-edit-form">
                 <div class="form-group">
                     <label for="post-title">Title</label>
                     <input type="text" class="form-control" id="post-title" name="title" value="{{.Page.Title}}">
@@ -74,6 +75,10 @@
                     <p class="help-block">Simple sentences to describe the post</p>
                 </div>
                 <div class="form-group">
+                    <label for="post-desc">Content</label>
+                    <textarea class="form-control" id="post-content" name="content">{{String .Page.RawBytes}}</textarea>
+                </div>
+                <div class="form-group">
                     <label for="post-file">Saved File</label>
                     {{if .IsNew}}
                     <input type="text" class="form-control" id="post-file" name="file" value="{{.Page.SourceRelpath}}">
@@ -89,6 +94,20 @@
     </div>
     <script src="/static/js/jquery-2.1.4.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/_admin/simplemde.min.js"></script>
+    <script>
+        var simplemde = new SimpleMDE({
+            "element": document.getElementById("post-content"),
+            "spellChecker":false,
+        });
+        simplemde.codemirror.on("refresh", function (change) {
+            if (simplemde.isFullscreenActive()) {
+                $("body > nav").hide();
+                return;
+            }
+            $("body > nav").show();
+        });
+    </script>
 </body>
 
 </html>

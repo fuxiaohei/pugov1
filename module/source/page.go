@@ -6,10 +6,12 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 
 	"github.com/BurntSushi/toml"
 	"github.com/fuxiaohei/pugov1/module/object"
+	"github.com/go-ini/ini"
 	"github.com/rs/zerolog/log"
 	blackfriday "gopkg.in/russross/blackfriday.v2"
 )
@@ -39,12 +41,16 @@ func parsePages(s *object.Source, withDraft bool) ([]*object.Page, error) {
 		}
 		pages = append(pages, page)
 	}
+	sort.Slice(pages, func(i, j int) bool {
+		return pages[i].CreateTime.Unix() > pages[j].CreateTime.Unix()
+	})
 	return pages, nil
 }
 
 const (
 	pageSeparator = "```"
 	pageMetaTOML  = "toml"
+	pageMetaINI   = "ini"
 )
 
 var (
@@ -78,9 +84,20 @@ func parseOnePage(file string, relPath string, fileInfo os.FileInfo) (*object.Pa
 
 func parsePageMeta(metadata []byte, p *object.Page) error {
 	if bytes.HasPrefix(metadata, []byte(pageMetaTOML)) {
+		p.MetaFormat = "toml"
 		metadata = bytes.TrimPrefix(metadata, []byte(pageMetaTOML))
 		metadata = bytes.TrimSpace(metadata)
 		return toml.Unmarshal(metadata, p)
+	}
+	if bytes.HasPrefix(metadata, []byte(pageMetaINI)) {
+		p.MetaFormat = "ini"
+		metadata = bytes.TrimPrefix(metadata, []byte(postMetaINI))
+		metadata = bytes.TrimSpace(metadata)
+		iniObj, err := ini.Load(metadata)
+		if err != nil {
+			return err
+		}
+		return iniObj.MapTo(p)
 	}
 	return ErrorPageMetaUnknownType
 }

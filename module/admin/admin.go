@@ -76,6 +76,8 @@ func postHandlers(rw http.ResponseWriter, r *http.Request) {
 		metaPostHandler(rw, r)
 	case "posts/edit":
 		postSaveHandler(rw, r)
+	case "pages/edit":
+		pageSaveHandler(rw, r)
 	default:
 		rw.Header().Set("Location", "/_admin/meta")
 		rw.WriteHeader(302)

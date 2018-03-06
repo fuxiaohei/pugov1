@@ -56,10 +56,11 @@
                 <li class="item">
                     <span class="time">{{.Created.Format "2006-01-02"}}</span>
                     <span class="slug">{{.URL}}</span>
-                    <a class="title" href="/_admin/pages/edit?slug={{.URL}}&created={{.Created.Unix}}">{{.Title}}</a>
+                    <a class="title" href="/_admin/pages/edit?slug-key={{.URL}}&created={{.Created.Unix}}">{{.Title}}</a>
                     {{if .Draft}}
-                    <span class="label label-warning">Draft</span>
+                    <span class="label label-warning label-draft">Draft</span>
                     {{end}}
+                    <a class="label label-success label-view" href="/{{.URL}}" target="_blank">View</a>       
                 </li>
                 {{end}}
             </ul>

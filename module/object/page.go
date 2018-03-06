@@ -22,6 +22,7 @@ type Page struct {
 	Draft        bool                   `toml:"draft" ini:"draft"`
 	Index        []*ContentIndex        `toml:"-" ini:"-"`
 
+	MetaFormat    string `toml:"-" ini:"-"`
 	SourceFile    string `toml:"-" ini:"-"`
 	SourceRelpath string `toml:"-" ini:"-"`
 	OutputFile    string `toml:"-" ini:"-"`

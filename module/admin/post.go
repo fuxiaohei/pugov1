@@ -22,7 +22,7 @@ func postPageHandler(rw http.ResponseWriter, r *http.Request) {
 
 func postEditHandler(rw http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
-	slug := r.FormValue("slug")
+	slug := r.FormValue("slug-key")
 	create := r.FormValue("created")
 	ct, _ := strconv.ParseInt(create, 10, 64)
 	var post *object.Post
@@ -58,7 +58,7 @@ func postSaveHandler(rw http.ResponseWriter, r *http.Request) {
 	if isNew {
 		err = saveNewPost(r.Form)
 	} else {
-		slug := r.FormValue("slug")
+		slug := r.FormValue("slug-key")
 		create := r.FormValue("created")
 		ct, _ := strconv.ParseInt(create, 10, 64)
 		post := source.QueryPost(gSource.Posts, slug, ct)

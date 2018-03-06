@@ -1,23 +1,30 @@
 ```toml
 title = "About PuGo"
-# slug = "about"
+slug = ""
 desc = "some words about pugo"
 date = "2018-03-01 00:00"
+update_date = "2018-03-06 22:43"
 author = "pugo"
-# set nav to active status when this page
 hover = "about"
-# set template file to render this page
-template = ""
+template = "page.html"
+lang = ""
+sort = 0
+draft = false
 
 [meta]
-metadata = "this is meta data"
+  metadata = "this is meta data"
 ```
 
 ### Introduction
 
 `PuGo` is a simple static site generator by [Golang](https://golang.org). It compiles [markdown](https://help.github.com/articles/markdown-basics/) to site pages with beautiful theme. No dependencies, cross platform and very fast.
 
+
+
 ![golang](/golang.png)
+
+
+
 
 ### Quick start
 

@@ -54,10 +54,11 @@
                 {{range .Posts}}
                 <li class="item">
                     <span class="time">{{.Created.Format "2006-01-02"}}</span>
-                    <a class="title" href="/_admin/posts/edit?slug={{.Slug}}&created={{.Created.Unix}}">{{.Title}}</a>
+                    <a class="title" href="/_admin/posts/edit?slug-key={{.Slug}}&created={{.Created.Unix}}">{{.Title}}</a>
                     {{if .Draft}}
-                    <span class="label label-warning">Draft</span>
+                    <span class="label label-warning label-draft">Draft</span>
                     {{end}}
+                    <a class="label label-success label-view" href="{{.URL}}" target="_blank">View</a>                    
                 </li>
                 {{end}}
             </ul>

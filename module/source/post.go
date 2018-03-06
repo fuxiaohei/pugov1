@@ -206,3 +206,33 @@ func WritePost(p *object.Post) error {
 	os.MkdirAll(filepath.Dir(toFile), 0755)
 	return ioutil.WriteFile(toFile, buf.Bytes(), 0644)
 }
+
+// WritePage write page to p.SourceFile
+func WritePage(p *object.Page) error {
+	buf := bytes.NewBuffer(nil)
+	if p.MetaFormat == "toml" || p.MetaFormat == "" {
+		buf.WriteString("```toml\n")
+		encoder := toml.NewEncoder(buf)
+		if err := encoder.Encode(p); err != nil {
+			return err
+		}
+		buf.WriteString("```")
+	}
+	if p.MetaFormat == "ini" {
+		buf.WriteString("```ini\n")
+		iniObj := ini.Empty()
+		if err := ini.ReflectFrom(iniObj, p); err != nil {
+			return err
+		}
+		// iniObj.Section("").Key("tags").SetValue(p.TagString())
+		if _, err := iniObj.WriteToIndent(buf, "  "); err != nil {
+			return err
+		}
+		buf.WriteString("```")
+	}
+	buf.WriteString("\n\n")
+	buf.Write(p.RawBytes)
+	toFile := p.SourceFile
+	os.MkdirAll(filepath.Dir(toFile), 0755)
+	return ioutil.WriteFile(toFile, buf.Bytes(), 0644)
+}

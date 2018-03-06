@@ -60,6 +60,14 @@ body {
     margin-left: 12px;
 }
 
+#posts-list .label-view{
+    display: none;
+}
+
+#posts-list .item:hover .label-view{
+    display: inline;
+}
+
 #posts-list .slug{
     color: #888;
     display: inline-block;
@@ -76,3 +84,4 @@ body {
 .CodeMirror pre{
     font-size: 14px !important;
 }
+
