@@ -1,0 +1,78 @@
+html,
+body {
+    font-family: "PingHei", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", STXihei, STHeiti, Heiti, SimSun, sans-serif;
+}
+
+pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', "Microsoft Yahei", Helvetica, Arial, sans-serif;
+}
+
+body {
+    padding-top: 80px;
+    /*background: url("../img/bg.jpg") no-repeat top center;*/
+    background-color: #FCFCFC;
+    color: #222;
+}
+
+.navbar-brand{
+    font-size: 18px
+}
+
+.navbar-nav li a{
+    font-size: 16px;
+}
+
+.form-group label{
+    font-size: 16px;
+}
+
+.form-group label{
+    color:#999;
+}
+
+#posts-list .time{
+    display: inline-block;
+    font-weight: bold;
+    font-size: 16px;
+    width: 150px;
+    color: #999;
+}
+
+#posts-list .title{
+    font-size: 20px;
+    color: #444;
+}
+
+#posts-list .heading{
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+#posts-list .item{
+    border-bottom: 1px dashed #F2F2F2;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+#posts-list .label{
+    vertical-align: text-top;
+    margin-left: 12px;
+}
+
+#posts-list .slug{
+    color: #888;
+    display: inline-block;
+    width: 200px;
+    font-size: 16px;
+}
+
+#post-title{
+    font-size:24px;
+    padding: 6px 0 10px 0;
+    height: auto;
+}
+
+.CodeMirror pre{
+    font-size: 14px !important;
+}

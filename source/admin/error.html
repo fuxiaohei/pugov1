@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Error - Admin Panels - PuGo</title>
+    <meta name="keywords" content="pugo,golang,static,site,generator" />
+    <meta name="description" content="PuGo is a Simple Static Site Generator" />
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/_admin/admin.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/_admin/meta">Admin</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/_admin/meta">Options</a>
+                    </li>
+                    <li>
+                        <a href="/_admin/posts">Posts</a>
+                    </li>
+                    <li>
+                        <a href="/_admin/pages">Pages</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="container">
+            <h4>Error Occurs</h4>
+            <hr>
+            <div class="panel panel-warning">
+                <div class="panel-heading">{{.From}}</div>
+                <div class="panel-body">
+                    {{.Error}}
+                </div>
+            </div>
+            <hr>
+            <p class="text-center">
+                <a class="btn btn-success" href="{{.Back}}" role="button">Goback</a>
+            </p>
+        </div>
+    </div>
+    <script src="/static/js/jquery-2.1.4.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+</body>
+
+</html>

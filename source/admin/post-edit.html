@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Posts - Admin Panels - PuGo</title>
+    <meta name="keywords" content="pugo,golang,static,site,generator" />
+    <meta name="description" content="PuGo is a Simple Static Site Generator" />
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/_admin/admin.css" />
+    <link rel="stylesheet" href="/_admin/simplemde.min.css">
+</head>
+
+<body class="" data-perma="">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/_admin/meta">Admin</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/_admin/meta">Options</a>
+                    </li>
+                    <li class="active">
+                        <a href="/_admin/posts">Posts</a>
+                    </li>
+                    <li>
+                        <a href="/_admin/pages">Pages</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="container">
+            <h4>Edit Post</h4>
+            <hr>
+            <form method="post" id="post-edit-form">
+                <div class="form-group">
+                    <label for="post-title">Title</label>
+                    <input type="text" class="form-control" id="post-title" name="title" value="{{.Post.Title}}" required>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label for="post-slug">Slug</label>
+                        <input type="text" class="form-control" id="post-slug" name="slug" value="{{.Post.Slug}}" required>
+                        <p class="help-block">Unique link for the post</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="post-tags">Tags</label>
+                        <input type="text" class="form-control" id="post-tags" name="tags" value="{{.Post.TagString}}">
+                        <p class="help-block">Tags for the post, separated by comma</p>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="checkbox">
+                            <label>{{if .Post.Draft}}
+                                <input type="checkbox" name="draft" checked> As Draft {{else}}
+                                <input type="checkbox" name="draft"> As Draft {{end}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="post-desc">Description</label>
+                    <textarea class="form-control" rows="2" id="post-desc" name="desc">{{.Post.Desc}}</textarea>
+                    <p class="help-block">Simple sentences to describe the post</p>
+                </div>
+                <div class="form-group">
+                    <label for="post-desc">Content</label>
+                    <textarea class="form-control" id="post-content" name="content">{{String .Post.RawBytes}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="post-file">Saved File</label>
+                    {{if .IsNew}}
+                    <input type="text" class="form-control" id="post-file" name="file" value="{{.Post.SourceRelpath}}" required>
+                    <p class="help-block">Save new post to the file</p> {{else}}
+                    <input type="text" class="form-control" id="post-file" name="file" value="{{.Post.SourceRelpath}}" readonly>
+                    <p class="help-block">
+                        Can't change saving file of created post
+                    </p> {{end}}
+                </div>
+                <button type="submit" class="btn btn-lg btn-success pull-right">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script src="/static/js/jquery-2.1.4.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/_admin/simplemde.min.js"></script>
+    <script>
+        var simplemde = new SimpleMDE({
+            "element": document.getElementById("post-content"),
+            "spellChecker":false,
+        });
+        simplemde.codemirror.on("refresh", function (change) {
+            if (simplemde.isFullscreenActive()) {
+                $("body > nav").hide();
+                return;
+            }
+            $("body > nav").show();
+        });
+    </script>
+</body>
+
+</html>

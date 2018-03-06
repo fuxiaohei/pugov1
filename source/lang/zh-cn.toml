@@ -1,0 +1,10 @@
+lang="zh-cn"
+
+[nav]
+home = "主页"
+archive = "归档"
+about = "关于"
+
+[post]
+prev = "以前的"
+next = "更新的"

@@ -1,0 +1,76 @@
+[meta]
+# site title, show in <title>
+title = "PuGo"
+
+# subtitle, words after title, in description
+subtitle = "Just For Writing"
+
+# print in html <meta>
+keyword = "pugo,golang,static,site,generator"
+
+# print in html <meta>
+desc = "PuGo is a Simple Static Site Generator"
+
+# build links for feed, sitemap
+domain = "localhost"
+
+# root path for site# if empty, build as http://{domain}/
+root = "http://localhost:9899/"
+
+# global language,
+# its used in global posts and themes, unless pages set lang
+lang = "en"
+
+
+[[nav]]
+link = "/"
+title = "Home"
+i18n = "home"
+hover = "home"
+blank = true
+
+[[nav]]
+link = "/archive.html"
+title = "Archive"
+i18n = "archive"
+hover = "archive"
+blank = true
+
+[[nav]]
+link = "/about.html"
+title = "About"
+i18n = "about"
+hover = "about"
+blank = true
+
+[[nav]]
+link = "http://godoc.org/github.com/go-xiaohei/pugo"
+title = "API"
+i18n = "api"
+hover = "api"
+blank = true
+
+[[author]]
+name = "pugo"
+email = ""
+url = "http://pugo.io"
+avatar = "@media/author.png"
+bio = "the robot of pugo, who generates all default contents."
+
+# comment settings
+# please only set one value
+# if multi values, it prints all comment iframes
+[comment]
+# disqus site name
+disqus = ""
+# duoshuo short name
+duoshuo = ""
+
+# analytics settings
+# please only set one value
+# if multi values, it prints all analytics codes
+[analytics]
+# google analytics, need as UA-XXXXX-Y
+google = ""
+# baidu analytics, need hash-code in hm.js?hash-code
+baidu = ""

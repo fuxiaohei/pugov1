@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Admin Panels - PuGo</title>
+    <meta name="keywords" content="pugo,golang,static,site,generator" />
+    <meta name="description" content="PuGo is a Simple Static Site Generator" />
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/_admin/admin.css" />
+</head>
+
+<body class="" data-perma="">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/_admin/meta">Admin</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="/_admin/meta">Options</a>
+                    </li>
+                    <li>
+                        <a href="/_admin/posts">Posts</a>
+                    </li>
+                    <li>
+                        <a href="/_admin/pages">Pages</a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <div class="content">
+        <div class="container">
+            <h4>Site Options</h4>
+            <hr>
+            <form id="admin-meta-form" method="post" action="/_admin/meta">
+                <div class="form-group">
+                    <label for="site-title">Site Title</label>
+                    <input type="text" class="form-control" id="site-title" name="title" value="{{.Meta.Title}}">
+                </div>
+                <div class="form-group">
+                    <label for="site-sub">Site Subtitle</label>
+                    <input type="text" class="form-control" id="site-sub" name="subtitle" value="{{.Meta.Subtitle}}">
+                </div>
+                <div class="form-group">
+                    <label for="site-keywords">Keywords</label>
+                    <input type="text" class="form-control" id="site-keywords" name="keywords" value="{{.Meta.Keyword}}">
+                </div>
+                <div class="form-group">
+                    <label for="site-url">Root URL</label>
+                    <input type="url" class="form-control" id="site-url" name="root" value="{{.Meta.Root}}">
+                    <p class="help-block">type in full url like http://localhost/com/</p>
+                </div>
+                <div class="form-group">
+                    <label for="site-lang">Lang</label>
+                    <input type="text" class="form-control" id="site-lang" name="lang" value="{{.Meta.Lang}}">
+                </div>
+                <div class="form-group">
+                    <label for="site-desc">Description</label>
+                    <textarea class="form-control" rows="3" id="site-desc" name="desc">{{.Meta.Desc}}</textarea>
+                    <p class="help-block">Simple sentences to describe your site</p>
+                </div>
+                <button type="submit" class="btn btn-lg btn-success pull-right">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script src="/static/js/jquery-2.1.4.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+name = "PuGo Admin"
+desc = "admin panels of PuGo"
+url = "https://github.com/go-xiaohei/pugo"
+tags = ["admin"]
+
+[[author]]
+    name = "fuxiaohei"
+    url = "http://fuxiaohei.me"
+    repo = "https://github.com/fuxiaohei"

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Posts - Admin Panels - PuGo</title>
+    <meta name="keywords" content="pugo,golang,static,site,generator" />
+    <meta name="description" content="PuGo is a Simple Static Site Generator" />
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/_admin/admin.css" />
+</head>
+
+<body class="" data-perma="">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/_admin/meta">Admin</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/_admin/meta">Options</a>
+                    </li>
+                    <li class="active">
+                        <a href="/_admin/posts">Posts</a>
+                    </li>
+                    <li>
+                        <a href="/_admin/pages">Pages</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="container">
+            <h4>Posts Manage</h4>
+            <hr>
+            <ul class="list-unstyled" id="posts-list">
+                <li class="heading">
+                    <span class="time">Time</span>
+                    <span class="title">Title</span>
+                    <span class="pull-right">
+                        <a class="btn btn-success" href="/_admin/posts/edit?new=1" role="button">Create New Post</a>
+                    </span>
+                </li>
+                {{range .Posts}}
+                <li class="item">
+                    <span class="time">{{.Created.Format "2006-01-02"}}</span>
+                    <a class="title" href="/_admin/posts/edit?slug={{.Slug}}&created={{.Created.Unix}}">{{.Title}}</a>
+                    {{if .Draft}}
+                    <span class="label label-warning">Draft</span>
+                    {{end}}
+                </li>
+                {{end}}
+            </ul>
+        </div>
+    </div>
+    <script src="/static/js/jquery-2.1.4.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+</body>
+
+</html>
