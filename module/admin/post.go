@@ -1,6 +1,7 @@
 package admin
 
 import (
+	"bytes"
 	"errors"
 	"net/http"
 	"net/url"
@@ -96,6 +97,7 @@ func saveExistPost(post *object.Post, values url.Values) error {
 		return errors.New("post-slug-is-conflict")
 	}
 	post.RawBytes = []byte(values.Get("content"))
+	post.RawBytes = fixCRLF(post.RawBytes)
 	post.Desc = values.Get("desc")
 	post.Title = title
 	post.TagStrings = strings.Split(values.Get("tags"), ",")
@@ -129,6 +131,7 @@ func saveNewPost(values url.Values) error {
 		TagStrings:    strings.Split(values.Get("tags"), ","),
 		Desc:          values.Get("desc"),
 	}
+	p.RawBytes = fixCRLF(p.RawBytes)
 	p.CreateString = p.CreateTime.Format(source.TimeLayoutCommon)
 	p.UpdateTime = p.CreateTime
 	p.UpdateString = p.CreateString
@@ -136,4 +139,8 @@ func saveNewPost(values url.Values) error {
 		p.AuthorName = owner.Name
 	}
 	return source.WritePost(p)
+}
+
+func fixCRLF(data []byte) []byte {
+	return bytes.Replace(data, []byte("\r\n"), []byte("\n"), -1)
 }

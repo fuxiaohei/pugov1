@@ -3,7 +3,7 @@ title       = 新的文章
 slug        = new-post-slug
 desc        = sample markdown page
 date        = 2018-03-04 19:31
-update_date = 2018-03-05 19:31
+update_date = 2018-03-06 23:09
 author      = 
 thumb       = 
 draft       = false
@@ -12,10 +12,11 @@ tags        = test,tag,post
 ```
 
 An h1 header
-============
+=======
 
 
 Paragraphs are separated by a blank line.
+
 
 2nd paragraph. *Italic*, **bold**, and `monospace`. Itemized lists
 look like:
@@ -24,8 +25,12 @@ look like:
   * that one
   * the other one
 
+
+
+
 Note that --- not considering the asterisk --- the actual text
 content starts at 4-columns in.
+
 
 > Block quotes are
 > written like so.

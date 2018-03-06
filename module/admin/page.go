@@ -98,6 +98,7 @@ func saveExistPage(page *object.Page, values url.Values) error {
 		return errors.New("title-or-slug-is-empty")
 	}
 	page.RawBytes = []byte(values.Get("content"))
+	page.RawBytes = fixCRLF(page.RawBytes)
 	page.Desc = values.Get("desc")
 	page.Title = title
 	page.Slug = slug
@@ -136,6 +137,7 @@ func saveNewPage(values url.Values) (*object.Page, error) {
 		Template:      values.Get("template"),
 		Desc:          values.Get("desc"),
 	}
+	p.RawBytes = fixCRLF(p.RawBytes)
 	p.CreateString = p.CreateTime.Format(source.TimeLayoutCommon)
 	p.UpdateTime = p.CreateTime
 	p.UpdateString = p.CreateString

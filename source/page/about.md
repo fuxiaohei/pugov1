@@ -3,7 +3,7 @@ title = "About PuGo"
 slug = ""
 desc = "some words about pugo"
 date = "2018-03-01 00:00"
-update_date = "2018-03-06 22:43"
+update_date = "2018-03-06 23:10"
 author = "pugo"
 hover = "about"
 template = "page.html"
@@ -19,12 +19,7 @@ draft = false
 
 `PuGo` is a simple static site generator by [Golang](https://golang.org). It compiles [markdown](https://help.github.com/articles/markdown-basics/) to site pages with beautiful theme. No dependencies, cross platform and very fast.
 
-
-
 ![golang](/golang.png)
-
-
-
 
 ### Quick start
 
